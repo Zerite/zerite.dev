@@ -29,7 +29,9 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async () => ({
-  repos: await (await fetch("https://api.github.com/orgs/Zerite/repos")).json(),
+  repos: await fetch("https://api.github.com/orgs/Zerite/repos").then((value) =>
+    value.json(),
+  ),
 });
 
 interface LoaderData {
@@ -65,17 +67,17 @@ export default function Index() {
         </Menu>
       </Flex>
       <Box p="12" pt="4" bg="gray.900">
-        <Center>
+        <Center justifyContent={{ lg: "center", md: "start" }}>
           <Heading fontSize="5xl" fontFamily="mono">
             Hey, we&apos;re Zerite.
           </Heading>
         </Center>
-        <Center>
+        <Center justifyContent={{ lg: "center", md: "start" }}>
           <Text fontSize="m" fontFamily="mono" textColor="gray.600">
             A team of passionate developers, innovating in the gaming space.
           </Text>
         </Center>
-        <Center>
+        <Center justifyContent={{ lg: "center", md: "start" }}>
           <HStack pt="2">
             <a
               href="https://github.com/Zerite"
@@ -94,13 +96,17 @@ export default function Index() {
           </HStack>
         </Center>
       </Box>
-      <Box px={{ base: 12, xl: 24 }} py="12">
+      <Box px={{ base: 12, lg: 24 }} py="12">
         <Heading fontSize="3xl" fontFamily="mono">
           Projects
         </Heading>
         <Text>Check out some of our open source solutions!</Text>
 
-        <SimpleGrid pt={4} columns={{ base: 1, md: 2, xl: 4 }} spacing={4}>
+        <SimpleGrid
+          pt={4}
+          columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
+          spacing={4}
+        >
           {data.repos.map((value) => (
             <Project
               key={value.name}
