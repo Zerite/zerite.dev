@@ -21,6 +21,7 @@ import stylesUrl from "../styles/index.css";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import Project from "~/component/project";
 
+// noinspection JSUnusedGlobalSymbols
 export const links: LinksFunction = () => [
   {
     rel: "stylesheet",
@@ -29,20 +30,24 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async () => ({
-  repos: await fetch("https://api.github.com/orgs/Zerite/repos").then((value) =>
-    value.json(),
-  ),
+  repos: (
+    await fetch("https://api.github.com/orgs/Zerite/repos").then((value) =>
+      value.json(),
+    )
+  ).filter((value: RepoResponse) => !value.name.startsWith(".")),
 });
 
+interface RepoResponse {
+  name: string;
+  html_url: string;
+  description: string;
+  stargazers_count: number;
+  forks_count: number;
+  language: string;
+}
+
 interface LoaderData {
-  repos: {
-    name: string;
-    html_url: string;
-    description: string;
-    stargazers_count: number;
-    forks_count: number;
-    language: string;
-  }[];
+  repos: RepoResponse[];
 }
 
 export default function Index() {
