@@ -63,7 +63,7 @@ export default function Index() {
         />
         <Spacer />
         <Menu>
-          <MenuButton as={IconButton} icon={<MdMenu />} />
+          <MenuButton as={IconButton} icon={<MdMenu />} aria-label="Menu" />
           <MenuList>
             <MenuItem icon={<MdHome />}>
               <Link to="/">Home</Link>

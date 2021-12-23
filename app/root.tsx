@@ -30,20 +30,27 @@ const theme = extendTheme({
 });
 
 export const meta: MetaFunction = () => {
+  const title = "Zerite Development";
+  const description =
+    "A team of passionate developers, innovating in the gaming space.";
   return {
-    title: "Zerite Development",
-    description:
-      "A team of passionate developers, innovating in the gaming space.",
+    title,
+    description,
+    "og:title": title,
     "og:image": "/assets/banner.png",
     "og:color": "#101010",
     "og:type": "object",
-    "og:site_name": "Zerite Development",
+    "og:site_name": title,
     "og:url": "https://zerite.dev",
     "twitter:card": "summary_large_image",
+    "twitter:site": "@zeritedev",
+    "twitter:description": description,
+    "twitter:image": "/assets/banner.png",
   };
 };
 
 export default function App() {
+  // noinspection HtmlRequiredTitleElement
   return (
     <html lang="en">
       <head>
