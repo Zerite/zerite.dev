@@ -7,7 +7,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 8,
   },
-  ignorePatterns: ["node_modules/*", ".next/*", "functions/*.js"],
+  ignorePatterns: ["node_modules/*", ".next/*"],
   extends: ["eslint:recommended"],
   overrides: [
     {

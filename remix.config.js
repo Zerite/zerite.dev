@@ -5,9 +5,6 @@ module.exports = {
   appDirectory: "app",
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
-  serverModuleFormat: "esm",
-  serverPlatform: "neutral",
-  serverBuildDirectory: "build",
-  devServerBroadcastDelay: 1000,
-  ignoredRouteFiles: [".*"],
+  serverBuildDirectory: "api/_build",
+  ignoredRouteFiles: [".*"]
 };
