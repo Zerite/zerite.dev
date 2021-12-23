@@ -98,7 +98,9 @@ export default function Index() {
         </Box>
         <Box px={{ base: 12, lg: 24 }} py="12">
           <Heading fontSize="3xl">Projects</Heading>
-          <Text>Check out some of our open source solutions!</Text>
+          <Text textColor="gray.600">
+            Check out some of our open source solutions!
+          </Text>
 
           <SimpleGrid
             pt={4}
