@@ -55,7 +55,7 @@ export default function Index() {
   return (
     <>
       <main className="content">
-        <Box bgImage="/assets/banner-bg.webp">
+        <Box bg="linear-gradient(0deg, rgba(24,24,24,1) 0%, rgba(24,24,24,0) 75%), url(/assets/banner-bg.webp)">
           <Flex p="6" justifyContent="space-between">
             <Logo h={10} spin={true} />
             <Menu>
