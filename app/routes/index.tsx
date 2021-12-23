@@ -57,12 +57,10 @@ export default function Index() {
           </Flex>
           <Box p="12" pt="4">
             <Center justifyContent={{ lg: "center", md: "start" }}>
-              <Heading fontSize="5xl" fontFamily="mono">
-                Hey, we&apos;re Zerite.
-              </Heading>
+              <Heading fontSize="5xl">Hey, we&apos;re Zerite.</Heading>
             </Center>
             <Center justifyContent={{ lg: "center", md: "start" }}>
-              <Text fontSize="m" fontFamily="mono" textColor="gray.600">
+              <Text fontSize="m" textColor="gray.600">
                 A team of passionate developers, innovating in the gaming space.
               </Text>
             </Center>
@@ -87,9 +85,7 @@ export default function Index() {
           </Box>
         </Box>
         <Box px={{ base: 12, lg: 24 }} py="12">
-          <Heading fontSize="3xl" fontFamily="mono">
-            Projects
-          </Heading>
+          <Heading fontSize="3xl">Projects</Heading>
           <Text>Check out some of our open source solutions!</Text>
 
           <SimpleGrid
@@ -117,8 +113,7 @@ export default function Index() {
             <Text as="b">Zerite Development</Text>
           </Stack>
           <Text fontSize="sm" alignSelf={{ base: "center", sm: "start" }}>
-            &copy; {new Date().getFullYear()} Zerite Development. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} All rights reserved.
           </Text>
         </Stack>
       </Box>
