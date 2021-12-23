@@ -77,20 +77,20 @@ export default function Index() {
               </Text>
             </Center>
             <Center justifyContent={{ lg: "center", md: "start" }}>
-              <HStack pt="2">
+              <HStack pt="4" gap="4">
                 <a
                   href="https://github.com/Zerite"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconButton aria-label="GitHub" icon={<FaGithub />} />
+                  <FaGithub size="25" />
                 </a>
                 <a
                   href="https://twitter.com/ZeriteDev"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <IconButton aria-label="Twitter" icon={<FaTwitter />} />
+                  <FaTwitter size="25" />
                 </a>
               </HStack>
             </Center>
