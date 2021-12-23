@@ -39,7 +39,7 @@ const Project = (props: Props) => (
       <HStack alignSelf="start">
         {props.language && (
           <Badge colorScheme={props.color} variant="solid">
-            <Center height={6}>{props.language}</Center>
+            <Center>{props.language}</Center>
           </Badge>
         )}
         <HStack>
