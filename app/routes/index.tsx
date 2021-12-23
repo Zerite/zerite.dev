@@ -38,12 +38,24 @@ interface LoaderData {
   repos: RepoResponse[];
 }
 
+const projectColors = [
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "teal",
+  "blue",
+  "cyan",
+  "purple",
+  "pink",
+];
+
 export default function Index() {
   const data = useLoaderData<LoaderData>();
   return (
     <>
       <main className="content">
-        <Box bg="gray.900">
+        <Box bgImage="/assets/banner-bg.webp">
           <Flex p="6" justifyContent="space-between">
             <Logo h={10} spin={true} />
             <Menu>
@@ -56,7 +68,7 @@ export default function Index() {
             </Menu>
           </Flex>
           <Box p="12" pt="4">
-            <Center justifyContent={{ lg: "center", md: "start" }}>
+            <Center justifyContent={{ lg: "center", md: "start" }} pb="5px">
               <Heading fontSize="5xl">Hey, we&apos;re Zerite.</Heading>
             </Center>
             <Center justifyContent={{ lg: "center", md: "start" }}>
@@ -93,7 +105,7 @@ export default function Index() {
             columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
             spacing={4}
           >
-            {data.repos.map((value) => (
+            {data.repos.map((value, index) => (
               <Project
                 key={value.name}
                 name={value.name}
@@ -102,6 +114,7 @@ export default function Index() {
                 stars={value.stargazers_count}
                 forks={value.forks_count}
                 language={value.language}
+                color={projectColors[index % projectColors.length]}
               />
             ))}
           </SimpleGrid>
@@ -109,9 +122,9 @@ export default function Index() {
       </main>
       <Box as="footer" py="12" px={{ base: "4", md: "8" }} bg="gray.900">
         <Stack>
-          <Stack direction="row" spacing="4" align="center">
-            <Text as="b">Zerite Development</Text>
-          </Stack>
+          <Text as="b" alignSelf={{ base: "center", sm: "start" }}>
+            Zerite Development
+          </Text>
           <Text fontSize="sm" alignSelf={{ base: "center", sm: "start" }}>
             &copy; {new Date().getFullYear()} All rights reserved.
           </Text>
