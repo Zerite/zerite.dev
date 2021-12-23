@@ -1,8 +1,8 @@
-import type { MetaFunction } from "remix";
 import {
   Links,
   LiveReload,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -14,8 +14,8 @@ import "@fontsource/inter/700.css";
 
 const theme = extendTheme({
   fonts: {
-    heading: "Inter",
-    body: "Inter",
+    heading: "Inter, sans-serif",
+    body: "Inter, sans-serif",
   },
   colors: {
     gray: {
