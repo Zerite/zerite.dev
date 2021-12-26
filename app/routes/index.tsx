@@ -31,7 +31,7 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader: LoaderFunction = async () => ({
-  repos: await fetchRepos(),
+  repos: await fetchRepos("Zerite"),
 });
 
 interface LoaderData {
