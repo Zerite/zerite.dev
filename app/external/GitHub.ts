@@ -9,7 +9,9 @@ export interface RepoResponse {
   language: string;
 }
 
-export const fetchRepos = async (user: string) =>
-  await httpClient.get<RepoResponse[]>(
+export const fetchRepos = async (user: string) => {
+  const repos = await httpClient.get<RepoResponse[]>(
     `https://api.github.com/orgs/${user}/repos`,
   );
+  return repos.filter((repo) => !repo.name.startsWith("."));
+};
