@@ -13,5 +13,7 @@ export const fetchRepos = async (user: string) => {
   const repos = await httpClient.get<RepoResponse[]>(
     `https://api.github.com/orgs/${user}/repos`,
   );
-  return repos.filter((repo) => !repo.name.startsWith("."));
+  return repos
+    .filter((repo) => !repo.name.startsWith("."))
+    .sort((a, b) => b.stargazers_count - a.stargazers_count);
 };

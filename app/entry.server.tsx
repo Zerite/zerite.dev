@@ -15,8 +15,7 @@ export default function handleRequest(
   remixContext: EntryContext,
 ) {
   // set up the Emotion cache
-  const key = "chakra";
-  const cache = createCache({ key });
+  const cache = createCache({ key: "chakra" });
 
   // Get functions to extract Emotion CSS styles from the app
   const { extractCriticalToChunks, constructStyleTagsFromChunks } =

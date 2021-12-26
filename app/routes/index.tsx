@@ -12,6 +12,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import { MdHome, MdMenu } from "react-icons/md";
 import type { LinksFunction, LoaderFunction } from "remix";
@@ -30,13 +31,48 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export const loader: LoaderFunction = async () => ({
-  repos: await fetchRepos("Zerite"),
-});
+interface RepoFetchConfig {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface RepoData {
+  config: RepoFetchConfig;
+  response: RepoResponse[];
+}
 
 interface LoaderData {
-  repos: RepoResponse[];
+  repos: RepoData[];
 }
+
+const repoConfigs: RepoFetchConfig[] = [
+  {
+    id: "Zerite",
+    name: "Zerite",
+    description:
+      "Our in-house solutions for smaller, more streamlined projects.",
+  },
+  {
+    id: "MultifoldLauncher",
+    name: "Multifold",
+    description: "A next-generation cross-platform Minecraft Launcher.",
+  },
+];
+
+export const loader: LoaderFunction = async () => {
+  const repos: RepoData[] = [];
+  for (const config of repoConfigs) {
+    repos.push({
+      config,
+      response: await fetchRepos(config.id),
+    });
+  }
+
+  return {
+    repos,
+  };
+};
 
 const projectColors = [
   "red",
@@ -97,29 +133,32 @@ export default function Index() {
           </Box>
         </Box>
         <Box px={{ base: 12, lg: 24 }} py="12">
-          <Heading fontSize="3xl">Projects</Heading>
-          <Text textColor="gray.600">
-            Check out some of our open source solutions!
-          </Text>
-
-          <SimpleGrid
-            pt={4}
-            columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
-            spacing={4}
-          >
-            {data.repos.map((value, index) => (
-              <Project
-                key={value.name}
-                name={value.name}
-                description={value.description}
-                link={value.html_url}
-                stars={value.stargazers_count}
-                forks={value.forks_count}
-                language={value.language}
-                color={projectColors[index % projectColors.length]}
-              />
+          <VStack gap={8} pt={4}>
+            {data.repos.map((repos) => (
+              <Box key={repos.config.id}>
+                <Heading fontSize="xl">{repos.config.name}</Heading>
+                <Text color="gray.600">{repos.config.description}</Text>
+                <SimpleGrid
+                  pt={4}
+                  columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
+                  spacing={4}
+                >
+                  {repos.response.map((value, index) => (
+                    <Project
+                      key={value.name}
+                      name={value.name}
+                      description={value.description}
+                      link={value.html_url}
+                      stars={value.stargazers_count}
+                      forks={value.forks_count}
+                      language={value.language}
+                      color={projectColors[index % projectColors.length]}
+                    />
+                  ))}
+                </SimpleGrid>
+              </Box>
             ))}
-          </SimpleGrid>
+          </VStack>
         </Box>
       </main>
       <Box as="footer" py="12" px={{ base: "4", md: "8" }} bg="gray.900">
