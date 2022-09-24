@@ -54,6 +54,11 @@ const repoConfigs: RepoFetchConfig[] = [
       "Our in-house solutions for smaller, more streamlined projects.",
   },
   {
+    id: "Britmoji",
+    name: "Britmoji",
+    description: "Small side-projects that aren't quite ready for prime-time.",
+  },
+  {
     id: "MultifoldLauncher",
     name: "Multifold",
     description: "A next-generation cross-platform Minecraft Launcher.",
